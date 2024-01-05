@@ -9,3 +9,7 @@
 body {
   color: rgb(var(--foreground-rgb));
 }
+
+button:hover {
+  cursor: pointer;
+}
