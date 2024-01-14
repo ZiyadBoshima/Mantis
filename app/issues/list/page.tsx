@@ -18,7 +18,7 @@ const IssuesPage = async ({ searchParams }: Props) => {
 
   const orderBy = columnNames
   .includes(searchParams.orderBy)
-    ? { [searchParams.orderBy]: 'asc' }
+    ? { [searchParams.orderBy]: (searchParams.sortOrder) ? searchParams.sortOrder : 'asc' }
     : undefined
   
   const where = { status }
