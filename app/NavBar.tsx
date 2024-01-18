@@ -17,7 +17,7 @@ const NavBar = () => {
       <Container>
         <Flex justify="between">
           <Flex align="center" gap="3">
-            <Link href="/"><AiFillBug /></Link>
+            <Link href="/" className='text-2xl font-semibold text-blue-700 mr-5'>Mantis</Link>
             <NavLinks />
           </Flex>
           <AuthStatus />
