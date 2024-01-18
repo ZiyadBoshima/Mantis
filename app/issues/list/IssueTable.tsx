@@ -1,7 +1,8 @@
 import { IssueStatusBadge } from '@/app/components'
+import { IssueWithUser } from '@/app/types'
 import { Issue, Status } from '@prisma/client'
 import { ArrowDownIcon, ArrowUpIcon } from '@radix-ui/react-icons'
-import { Table } from '@radix-ui/themes'
+import { Avatar, Table } from '@radix-ui/themes'
 import Link from 'next/link'
 import NextLink from 'next/link'
 
@@ -16,7 +17,7 @@ export interface IssueQuery {
 
 interface Props {
   searchParams: IssueQuery,
-  issues: Issue[]
+  issues: IssueWithUser[]
 }
 
 const IssueTable = ({ searchParams, issues }: Props) => {
@@ -38,7 +39,7 @@ const IssueTable = ({ searchParams, issues }: Props) => {
       </Table.Header>
       <Table.Body>
         {issues.map(issue => (
-          <Table.Row key={issue.id}>
+          <Table.Row key={issue.id} align='center'>
             <Table.Cell>
               <Link href={`/issues/${issue.id}`}>
                 {issue.title}
@@ -47,6 +48,17 @@ const IssueTable = ({ searchParams, issues }: Props) => {
             </Table.Cell>
             <Table.Cell className='hidden md:table-cell'><IssueStatusBadge status={issue.status} /></Table.Cell>
             <Table.Cell className='hidden md:table-cell'>{issue.createdAt.toDateString()}</Table.Cell>
+            <Table.Cell className='hidden md:table-cell'>
+            {issue.assignedToUser && (
+              <Avatar
+                src={issue.assignedToUser.image!} 
+                fallback="?"
+                size="1"
+                radius='full'
+                className='p-0'
+              />
+            )}
+            </Table.Cell>
           </Table.Row>
         ))}
       </Table.Body>
@@ -69,6 +81,7 @@ const columns: {
   { label: 'Issue', value: 'title' },
   { label: 'Status', value: 'status', className: 'hidden md:table-cell' },
   { label: 'Created At', value: 'createdAt', className: 'hidden md:table-cell' },
+  { label: '', value: 'assignedToUserId', className: 'hidden md:table-cell' },
 ]
 
 export const columnNames = columns.map(column => column.value)
