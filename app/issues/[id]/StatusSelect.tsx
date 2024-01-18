@@ -3,7 +3,6 @@
 import { Issue, Status } from '@prisma/client'
 import { Select } from '@radix-ui/themes'
 import axios from 'axios'
-import React from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
 
@@ -15,8 +14,6 @@ const statuses: { label: string, value?: Status }[] = [
 
 const StatusSelect = ({ issue }: { issue: Issue }) => {
   const router = useRouter()
-
-  const { status } =  issue
 
   const changeStatus = (status: Status) => {
     axios
@@ -30,7 +27,7 @@ const StatusSelect = ({ issue }: { issue: Issue }) => {
   return (
     <>
       <Select.Root 
-      defaultValue={status || null!}
+      value={issue.status}
       onValueChange={changeStatus}>
         <Select.Trigger placeholder='Change status...' />
         <Select.Content>
