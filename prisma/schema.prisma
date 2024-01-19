@@ -11,20 +11,30 @@ datasource db {
 }
 
 model Issue {
-  id               Int      @id @default(autoincrement())
-  title            String   @db.VarChar(255)
-  description      String   @db.Text
-  status           Status   @default(OPEN)
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-  assignedToUserId String?  @db.VarChar(255)
-  assignedToUser   User?    @relation(fields: [assignedToUserId], references: [id])
+  id               Int       @id @default(autoincrement())
+  title            String    @db.VarChar(255)
+  description      String    @db.Text
+  status           Status    @default(OPEN)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  assignedToUserId String?   @db.VarChar(255)
+  assignedToUser   User?     @relation(fields: [assignedToUserId], references: [id])
+  comments         Comment[]
 }
 
 enum Status {
   OPEN
   IN_PROGRESS
   CLOSED
+}
+
+model Comment {
+  id      Int    @id @default(autoincrement())
+  text    String @db.Text
+  issueId Int    @db.Int
+  issue   Issue  @relation(fields: [issueId], references: [id])
+  userId  String @db.VarChar(255)
+  user    User   @relation(fields: [userId], references: [id])
 }
 
 model Account {
@@ -63,6 +73,7 @@ model User {
   accounts       Account[]
   sessions       Session[]
   assignedIssues Issue[]
+  comments        Comment[]
 }
 
 model VerificationToken {
