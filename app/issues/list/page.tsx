@@ -21,7 +21,9 @@ const IssuesPage = async ({ searchParams }: Props) => {
     ? { [searchParams.orderBy]: (searchParams.sortOrder) ? searchParams.sortOrder : 'asc' }
     : undefined
   
-  const where = { status }
+  const assignedToUserId = (searchParams.userId !== 'ALL') ? searchParams.userId : undefined
+
+  const where = { status, assignedToUserId }
 
   const page = parseInt(searchParams.page) || 1
   const pageSize = 10
