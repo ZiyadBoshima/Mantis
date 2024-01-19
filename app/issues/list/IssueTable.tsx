@@ -1,6 +1,6 @@
 import { IssueStatusBadge } from '@/app/components'
 import { IssueWithUser } from '@/app/types'
-import { Issue, Status } from '@prisma/client'
+import { Issue, Status, User } from '@prisma/client'
 import { ArrowDownIcon, ArrowUpIcon } from '@radix-ui/react-icons'
 import { Avatar, Table } from '@radix-ui/themes'
 import Link from 'next/link'
@@ -9,6 +9,7 @@ import NextLink from 'next/link'
 type SortOrder = 'asc' | 'desc'
 
 export interface IssueQuery {
+  userId?: string,
   status: Status, 
   orderBy: keyof Issue,
   sortOrder: SortOrder,
