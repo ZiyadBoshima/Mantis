@@ -21,8 +21,8 @@ const CommentCard = ({ comment }: { comment: CommentWithIssueAndUser }) => {
   const { user, issue } = comment
 
   return (
-    <Link href={'/issues/' + issue.id} className="flex flex-col gap-1 mx-5 rounded-lg border border-slate-300 group hover:border-slate-200 transition-color">
-      <Flex align='center' gap="2" className='rounded-t-lg bg-slate-50 px-2 py-1 border-b group border-slate-300 group-hover:border-slate-200 transition-color'>
+    <Link href={'/issues/' + issue.id} className="flex flex-col gap-1 mx-5 rounded-lg border border-slate-300 group hover:border-slate-400 transition-colors">
+      <Flex align='center' gap="2" className='rounded-t-lg bg-slate-50 px-2 py-1 border-b group border-slate-300 group-hover:border-slate-400 transition-colors'>
         <Avatar
           src={user.image!}
           fallback="?"
