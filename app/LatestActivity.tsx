@@ -7,8 +7,8 @@ import { fromNow } from './utils/fromNow'
 const LatestActivity = ({ comments }: { comments: CommentWithIssueAndUser[] }) => {
   return (
     <Card>
-      <Heading size="4" mb="5">Latest Activity</Heading>
-      <Flex direction="column" gap="5">
+      <Heading size="4">Latest Activity</Heading>
+      <Flex direction="column" gap="5" py="5">
         {comments.map(comment => (
           <CommentCard key={comment.id} comment={comment}/>
         ))}
