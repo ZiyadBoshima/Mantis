@@ -6,6 +6,12 @@ const issueWithUser = Prisma.validator<Prisma.IssueDefaultArgs>()({
 
 export type IssueWithUser = Prisma.IssueGetPayload<typeof issueWithUser>
 
+const commentWithUser = Prisma.validator<Prisma.CommentDefaultArgs>()({
+  include: { user: true }
+})
+
+export type CommentWithUser = Prisma.CommentGetPayload<typeof commentWithUser>
+
 const commentWithIssueAndUser = Prisma.validator<Prisma.CommentDefaultArgs>()({
   include: { 
     user: true, 
