@@ -1,9 +1,8 @@
-import { IssueStatusBadge } from '@/app/components'
+import { IssueStatusBadge, Link } from '@/app/components'
 import { IssueWithUser } from '@/app/types'
-import { Issue, Status, User } from '@prisma/client'
+import { Issue, Status } from '@prisma/client'
 import { ArrowDownIcon, ArrowUpIcon } from '@radix-ui/react-icons'
 import { Avatar, Table } from '@radix-ui/themes'
-import Link from 'next/link'
 import NextLink from 'next/link'
 
 type SortOrder = 'asc' | 'desc'
