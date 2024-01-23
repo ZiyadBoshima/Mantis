@@ -9,6 +9,7 @@ import DeleteIssueButton from './DeleteIssueButton'
 import EditIssueButton from './EditIssueButton'
 import IssueDetails from './IssueDetails'
 import StatusSelect from './StatusSelect'
+import CommentSection from './CommentSection'
 
 interface Props {
   params: { id: string }
@@ -29,6 +30,7 @@ const IssueDetailPage = async ({ params }: Props) => {
     <Grid columns={{initial: "1", sm: "5"}} gap="4">
       <Box className='md:col-span-4'>
         <IssueDetails issue={issue} />
+        <CommentSection issueId={issue.id} />
       </Box>
       {session && (
         <Box>
