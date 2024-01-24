@@ -28,7 +28,17 @@ const IssueTable = ({ searchParams, issues }: Props) => {
           {columns.map((column) => (
             <Table.ColumnHeaderCell key={column.value} className={column.className}>
               <NextLink href={{
-                query: { ...searchParams, orderBy: column.value, sortOrder: (searchParams.sortOrder === 'asc') ? 'desc' : 'asc' }
+                query: { 
+                  ...searchParams, 
+                  orderBy: column.value, 
+                  sortOrder: (searchParams.orderBy === column.value)
+                  ? (searchParams.sortOrder === 'asc') 
+                    ? 'desc' 
+                    : (searchParams.sortOrder === 'desc') 
+                      ? undefined 
+                      : 'asc'
+                  : 'asc'
+                }
               }}>
                 {column.label}
               </NextLink>
