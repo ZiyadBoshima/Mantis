@@ -90,7 +90,7 @@ const columns: {
 }[] = [
   { label: 'Issue', value: 'title' },
   { label: 'Status', value: 'status', className: 'hidden md:table-cell' },
-  { label: 'Created At', value: 'createdAt', className: 'hidden md:table-cell' },
+  { label: 'Date', value: 'createdAt', className: 'hidden md:table-cell' },
   { label: '', value: 'assignedToUserId', className: 'hidden md:table-cell' },
 ]
 
