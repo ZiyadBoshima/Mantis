@@ -5,10 +5,10 @@ import IssueActions from './IssueActions'
 const LoadingIssuesPage = () => {
   const issues = [1, 2, 3, 4, 5]
   return (
-    <div>
+    <div className='flex flex-col gap-3'>
       <IssueActions />
       <Table.Root variant='surface'>
-        <Table.Header>
+        <Table.Header className='bg-slate-50'>
           <Table.Row>
             <Table.ColumnHeaderCell>Issue</Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell className='hidden md:table-cell'>Status</Table.ColumnHeaderCell>
