@@ -2,7 +2,7 @@
 
 **Mantis** is an issue tracker built with Next.js, Typescript, Tailwindcss, and RadixUI. The initial codebase was from a course by Mosh Hamedani.
 
-![Example](https://github.com/ZiyadBoshima/Mantis/assets/137479354/fb5b8214-7ae1-4a4e-91c1-f2a0520795a2)
+![Mantis-Dashboard](https://github.com/ZiyadBoshima/Mantis/assets/137479354/89f3e1db-919b-447f-a386-e3275823f10c)
 
 ## Prerequisites
 
