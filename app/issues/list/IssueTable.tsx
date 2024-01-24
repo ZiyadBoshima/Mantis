@@ -23,7 +23,7 @@ interface Props {
 const IssueTable = ({ searchParams, issues }: Props) => {
   return (
     <Table.Root variant='surface'>
-      <Table.Header>
+      <Table.Header className='bg-slate-50'>
         <Table.Row>
           {columns.map((column) => (
             <Table.ColumnHeaderCell key={column.value} className={column.className}>
