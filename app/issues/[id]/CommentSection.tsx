@@ -1,15 +1,34 @@
 import { CommentWithUser } from '@/app/types'
 import { fromNow } from '@/app/utils/fromNow'
 import prisma from '@/prisma/client'
-import { Avatar, Button, Flex, Text } from '@radix-ui/themes'
+import { Avatar, Flex, Text } from '@radix-ui/themes'
+import CommentForm from './CommentForm'
+import { getServerSession } from "next-auth";
+import authOptions from '@/app/auth/authOptions'
 
 const CommentSection = async ({ issueId }: { issueId: number }) => {
+  const session = await getServerSession(authOptions)
+
   const comments: CommentWithUser[] = await prisma.comment.findMany({
     where: { issueId },
     include: { user: true },
     orderBy: { createdAt: 'asc' }
   })
 
+  var userId: string | undefined
+  if (session?.user?.email) {
+    const user = await prisma.user.findUnique({
+      where: { 
+        email: session.user.email
+      },
+      select: {
+        id: true
+      }
+    })
+
+    userId = user?.id
+  }
+  
   return (
     <div className='mt-5'>
       <div className='mb-2'>
@@ -23,7 +42,7 @@ const CommentSection = async ({ issueId }: { issueId: number }) => {
           {index != comments.length - 1 && <div className='mx-auto w-0.5 h-6 bg-slate-200' />}
         </div>
       ))}
-      <AddComment />
+      <CommentForm issueId={issueId} userId={userId!}/>
     </div>
   )
 }
@@ -49,22 +68,6 @@ const CommentCard = ({ comment }: { comment: CommentWithUser }) => {
         </Flex>
       </Flex>
       <Text className='pl-4 py-1 text-slate-600'>{comment.text}</Text>
-    </div>
-  )
-}
-
-const AddComment = () => {
-  return (
-    <div className='mt-6 flex flex-col gap-2'>
-      <div className='flex flex-col gap-1 rounded-lg border border-slate-300'>
-        <Text weight="medium" ml="2" mt="1">
-          Add a comment
-        </Text>
-        <textarea className='p-2 h-20 rounded-b-lg border-t border-slate-300' />
-      </div>
-      <Flex justify="end">
-        <Button className='w-30'>Add Comment</Button>
-      </Flex>
     </div>
   )
 }
