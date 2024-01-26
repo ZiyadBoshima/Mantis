@@ -9,13 +9,12 @@ import { usePathname } from 'next/navigation';
 
 const NavBar = () => {
 
-
   return (
     <nav className='border-b mb-5 px-5 py-3 bg-slate-50'>
       <Container>
         <Flex justify="between">
           <Flex align="center" gap="3">
-            <Link href="/" className='text-2xl font-semibold text-blue-700 mr-5'>Mantis</Link>
+            <Link href="/" className='text-2xl font-semibold text-blue-600 mr-5'>Mantis</Link>
             <NavLinks />
           </Flex>
           <AuthStatus />
