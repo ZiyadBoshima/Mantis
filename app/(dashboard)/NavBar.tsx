@@ -56,20 +56,18 @@ const AuthStatus = () => {
 
   if (status === "loading") return <Skeleton width="3rem" />
   
-  if (status === "unauthenticated")
-    return  <Link className="nav-link" href="/api/auth/signin">Login</Link>
-
   return (
     <Box>
       <DropdownMenu.Root>
         <DropdownMenu.Trigger>
-          <Avatar 
-          src={session!.user!.image!} 
-          fallback="?"
-          size="2"
-          radius='full'
-          className='cursor-pointer'
-          referrerPolicy='no-referrer'/>
+          <div className='cursor-pointer'>
+            <Avatar 
+            src={session!.user!.image!} 
+            fallback={session!.user!.name![0]}
+            size="2"
+            radius='full'
+            referrerPolicy='no-referrer'/>
+          </div>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content>
           <DropdownMenu.Label>
