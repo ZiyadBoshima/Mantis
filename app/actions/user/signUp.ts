@@ -32,5 +32,5 @@ export const signUp = async ({
       },
   });
 
-  return "Successfully created new user!";
+  return "Sign up successful!";
 };
