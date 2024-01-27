@@ -1,6 +1,6 @@
 # Mantis 
 
-**Mantis** is an issue tracker built with Next.js, Typescript, Tailwindcss, and RadixUI. The initial codebase was from a course by Mosh Hamedani.
+**Mantis** is an issue tracker built with Next.js, Tailwindcss, RadixUI, and Supabase. The initial codebase was from a course by Mosh Hamedani.
 
 ![Mantis-Dashboard](https://github.com/ZiyadBoshima/Mantis/assets/137479354/89f3e1db-919b-447f-a386-e3275823f10c)
 
@@ -29,7 +29,7 @@ npm install
 ```
 ### Configure the .env file
 
-1. Create a MySQL database for your project.
+1. Create a Supabase database for your project.
 2. Copy the .env.example file to .env and update the database connection details.
 
 ```bash
@@ -40,13 +40,12 @@ Open the .env file and update the following:
 
 ```dotenv
 DATABASE_URL=""
+DIRECT_URL=""
 NEXTAUTH_URL="http://localhost:3000"
 NEXTAUTH_SECRET=""
-GOOGLE_CLIENT_ID=""
-GOOGLE_CLIENT_SECRET=""
 ```
 
-For now, you will need to acquire a google client id in order to login to the dashboard with a google account. This variable will become optional soon. For the secrets, add any string of your choice.
+The DIRECT_URL field is required for Supabase to work.
 
 ### Run Migrations
 Run Prisma migrations to create database tables.
