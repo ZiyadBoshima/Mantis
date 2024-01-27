@@ -55,7 +55,7 @@ const CommentCard = ({ comment }: { comment: CommentWithUser }) => {
       <Flex align='center' gap="2" className='rounded-t-lg bg-slate-50 px-2 py-1 border-b group border-slate-300'>
         <Avatar
           src={user.image!}
-          fallback="?"
+          fallback={user!.name![0]}
           size="1"
           radius='full'
         />
