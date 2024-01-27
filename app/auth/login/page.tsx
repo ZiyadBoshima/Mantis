@@ -9,7 +9,6 @@ import { useState } from "react"
 import { z } from "zod"
 import { signIn } from "next-auth/react"
 import { useSearchParams } from "next/navigation"
-import SuccessMessage from "@/app/components/SuccessMessage"
 import { ErrorMessage, Spinner } from "@/app/components"
 
 type UserFormData = z.infer<typeof userLoginSchema>
