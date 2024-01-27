@@ -3,7 +3,7 @@
 import { Skeleton } from '@/app/components';
 import { Avatar, Box, Container, DropdownMenu, Flex, Text } from '@radix-ui/themes';
 import classnames from 'classnames';
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -76,7 +76,7 @@ const AuthStatus = () => {
             </Text>
           </DropdownMenu.Label>
           <DropdownMenu.Item>
-            <Link href="/api/auth/signout">Log out</Link>
+            <button onClick={() => signOut()}>Log out</button>
           </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Root>
