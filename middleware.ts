@@ -5,7 +5,9 @@ export default withAuth({
 	callbacks: {
 		authorized: async ({ req }) => {
       try {
-        const token = await getToken({req, secret: process.env.NEXTAUTH_SECRET, cookieName: 'next-auth.session-token', raw: true, secureCookie: true})
+        const isProduction = process.env.NODE_ENV === 'production';
+        const cookieName = (isProduction) ? '__Secure-next-auth.session-token' : 'next-auth.session-token'
+        const token = await getToken({req, secret: process.env.NEXTAUTH_SECRET, cookieName, raw: true, secureCookie: true})
         
         if (!token) return false;
 
