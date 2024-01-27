@@ -36,12 +36,12 @@ export const commentWithTextOnlySchema = z.object({
 
 export const userSignupSchema = z.object({
   name: z.string().min(1, 'Name is required').max(255),
-  email: z.string().email('Invalid email address').min(1, 'Email is required').max(255),
+  email: z.string().min(1, 'Email is required').max(255).email('Invalid email address'),
   password: z.string().min(1, 'Password is required').max(255),
 })
 
 export const userLoginSchema = z.object({
-  email: z.string().email('Invalid email address').min(1, 'Email is required').max(255),
+  email: z.string().min(1, 'Email is required').max(255).email('Invalid email address'),
   password: z.string().min(1, 'Password is required').max(255),
 })
 
