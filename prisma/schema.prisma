@@ -6,8 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
+  directUrl       = env("DIRECT_URL")
 }
 
 model Issue {
@@ -32,7 +33,7 @@ model Comment {
   id        Int      @id @default(autoincrement())
   text      String   @db.Text
   createdAt DateTime @default(now())
-  issueId   Int      @db.Int
+  issueId   Int      
   issue     Issue    @relation(fields: [issueId], references: [id])
   userId    String   @db.VarChar(255)
   user      User     @relation(fields: [userId], references: [id])
