@@ -3,19 +3,18 @@
 import { Skeleton } from '@/app/components';
 import { Avatar, Box, Container, DropdownMenu, Flex, Text } from '@radix-ui/themes';
 import classnames from 'classnames';
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const NavBar = () => {
-
 
   return (
     <nav className='border-b mb-5 px-5 py-3 bg-slate-50'>
       <Container>
         <Flex justify="between">
           <Flex align="center" gap="3">
-            <Link href="/" className='text-2xl font-semibold text-blue-700 mr-5'>Mantis</Link>
+            <Link href="/" className='text-2xl font-semibold text-blue-600 mr-5'>Mantis</Link>
             <NavLinks />
           </Flex>
           <AuthStatus />
@@ -57,20 +56,18 @@ const AuthStatus = () => {
 
   if (status === "loading") return <Skeleton width="3rem" />
   
-  if (status === "unauthenticated")
-    return  <Link className="nav-link" href="/api/auth/signin">Login</Link>
-
   return (
     <Box>
       <DropdownMenu.Root>
         <DropdownMenu.Trigger>
-          <Avatar 
-          src={session!.user!.image!} 
-          fallback="?"
-          size="2"
-          radius='full'
-          className='cursor-pointer'
-          referrerPolicy='no-referrer'/>
+          <div className='cursor-pointer'>
+            <Avatar 
+            src={session!.user!.image!} 
+            fallback={session!.user!.name![0]}
+            size="2"
+            radius='full'
+            referrerPolicy='no-referrer'/>
+          </div>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content>
           <DropdownMenu.Label>
@@ -79,7 +76,7 @@ const AuthStatus = () => {
             </Text>
           </DropdownMenu.Label>
           <DropdownMenu.Item>
-            <Link href="/api/auth/signout">Log out</Link>
+            <button onClick={() => signOut()}>Log out</button>
           </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Root>

@@ -1,8 +1,8 @@
 import { Status } from '@prisma/client'
 import { Avatar, Card, Flex, Heading, Text } from '@radix-ui/themes'
 import Link from 'next/link'
-import { CommentWithIssueAndUser } from './types'
-import { fromNow } from './utils/fromNow'
+import { CommentWithIssueAndUser } from '../types'
+import { fromNow } from '../utils/fromNow'
 
 const LatestActivity = ({ comments }: { comments: CommentWithIssueAndUser[] }) => {
   return (

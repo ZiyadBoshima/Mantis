@@ -1,8 +1,8 @@
 import prisma from '@/prisma/client'
 import { Avatar, Card, Flex, Heading, Table } from '@radix-ui/themes'
-import { Link } from './components'
+import { Link } from '../components'
 import React from 'react'
-import { IssueStatusBadge } from './components'
+import { IssueStatusBadge } from '../components'
 
 const LatestIssues = async () => {
   const issues = await prisma.issue.findMany({
