@@ -34,7 +34,7 @@ model Comment {
   text      String   @db.Text
   createdAt DateTime @default(now())
   issueId   Int      
-  issue     Issue    @relation(fields: [issueId], references: [id])
+  issue     Issue    @relation(fields: [issueId], references: [id], onDelete: Cascade)
   userId    String   @db.VarChar(255)
   user      User     @relation(fields: [userId], references: [id])
 }
