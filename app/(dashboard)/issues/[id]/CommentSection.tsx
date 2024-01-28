@@ -51,7 +51,7 @@ const CommentCard = ({ comment }: { comment: CommentWithUser }) => {
   const { user } = comment
 
   return (
-    <div className="flex flex-col gap-1 rounded-lg border border-slate-300">
+    <div className="flex flex-col rounded-lg border border-slate-300">
       <Flex align='center' gap="2" className='rounded-t-lg bg-slate-50 px-2 py-1 border-b group border-slate-300'>
         <Avatar
           src={user.image!}
@@ -67,7 +67,7 @@ const CommentCard = ({ comment }: { comment: CommentWithUser }) => {
           </Text>
         </Flex>
       </Flex>
-      <Text className='pl-4 py-1 text-slate-600'>{comment.text}</Text>
+      <Text className='px-4 py-1 text-slate-600'>{comment.text}</Text>
     </div>
   )
 }
