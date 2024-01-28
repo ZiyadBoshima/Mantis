@@ -9,15 +9,15 @@ const IssueActions = async () => {
   const users = await prisma.user.findMany()
 
   return (
-    <Flex justify="between">
-      <Flex gap="3">
+    <div className='flex flex-col gap-3 md:flex-row md:justify-between'>
+      <div className='flex gap-3 justify-between'>
         <IssueStatusFilter />
         <IssueAssigneeFilter users={users} />
-      </Flex>
+      </div>
       <Button>
         <Link href='/issues/new'>New Issues</Link>
       </Button>
-    </Flex>
+    </div>
   )
 }
 
