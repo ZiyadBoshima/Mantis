@@ -45,7 +45,7 @@ const CommentCard = ({ comment }: { comment: CommentWithIssueAndUser }) => {
           </Text>
         </Flex>
       </Flex>
-      <Text className='pl-4 py-1 text-slate-600'>{comment.text}</Text>
+      <Text className='px-4 py-1 text-slate-600'>{comment.text}</Text>
     </Link>
   )
 }
