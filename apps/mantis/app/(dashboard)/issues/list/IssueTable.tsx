@@ -26,11 +26,11 @@ const IssueTable = ({ searchParams, issues }: Props) => {
       <Table.Header className='bg-slate-50'>
         <Table.Row>
           {columns.map((column) => (
-            <Table.ColumnHeaderCell key={column.value} className={column.className}>
+            <Table.ColumnHeaderCell key={String(column.value)} className={column.className}>
               <NextLink href={{
                 query: { 
                   ...searchParams, 
-                  orderBy: column.value, 
+                  orderBy: column.value.toString(),
                   sortOrder: (searchParams.orderBy === column.value)
                   ? (searchParams.sortOrder === 'asc') 
                     ? 'desc' 
