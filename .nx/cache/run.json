@@ -1,0 +1,21 @@
+{
+  "run": {
+    "command": "nx dev --filter landing",
+    "startTime": "2024-02-05T17:15:06.561Z",
+    "endTime": "2024-02-05T17:15:08.093Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "landing:dev",
+      "target": "dev",
+      "projectName": "landing",
+      "hash": "988647563107400057",
+      "startTime": "2024-02-05T17:15:06.572Z",
+      "endTime": "2024-02-05T17:15:08.092Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 1
+    }
+  ]
+}

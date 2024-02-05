@@ -1,0 +1,20 @@
+@tailwind base;
+@import "@radix-ui/themes/styles.css";
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
