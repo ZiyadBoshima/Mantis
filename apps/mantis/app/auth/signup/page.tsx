@@ -31,7 +31,7 @@ const SignupPage = () => {
       router.push('/auth/login?signup=true')
     } catch(error) {
       setSubmitting(false)
-      setError('An unexpected error occured. Please try again.')
+      setError((error as Error)?.message || 'An unexpected error occured. Please try again.')
     }
   })
 
