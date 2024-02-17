@@ -24,4 +24,3 @@ export default withAuth({
 export const config = {
   matcher: ['/((?!auth/signup|auth/login|api/auth|auth/signin).*)']
 }
-//((?!auth/signup|auth/login|api/auth|auth/signin).*)
