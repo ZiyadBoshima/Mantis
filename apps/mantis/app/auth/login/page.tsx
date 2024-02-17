@@ -7,14 +7,15 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { useState } from "react"
 import { z } from "zod"
-import { signIn } from "next-auth/react"
-import { useSearchParams } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { ErrorMessage, Spinner } from "@/app/components"
+import { signIn } from "@/app/actions/user/signIn"
 
 type UserFormData = z.infer<typeof userLoginSchema>
 
 const Login = () => {
   const params = useSearchParams()
+  const router = useRouter()
 
   const { register, handleSubmit, formState: { errors } } = useForm<UserFormData>({
     resolver: zodResolver(userLoginSchema)
@@ -28,15 +29,14 @@ const Login = () => {
       setError('')
       setSubmitting(true)
 
-      await signIn('credentials', {
-        email: data.email,
-        password: data.password,
-        redirect: true,
-        callbackUrl: '/'
+      await signIn({ 
+        email: data.email, 
+        password: data.password 
       })
+      .then(res => { if (res === 200) router.replace('/') })
     } catch(error) {
       setSubmitting(false)
-      setError('An unexpected error occured. Please try again.')
+      setError((error as Error)?.message || 'An unexpected error occured. Please try again.')
     }
   })
 
